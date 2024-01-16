@@ -12,7 +12,17 @@ answer[i] == "Buzz" if i is divisible by 5.
 answer[i] == i (as a string) if none of the above conditions are true.
 */
 
-
+// Intuition:
+// 1. We need to loop through the numbers from 1 to n.
+// 2. If the number is divisible by 3 and 5, add "FizzBuzz" to the list.
+// 3. If the number is divisible by 3, add "Fizz" to the list.
+// 4. If the number is divisible by 5, add "Buzz" to the list.
+// 5. If the number is not divisible by 3 or 5, add the number as a string to the list.
+// 6. Return the list.
+// The trick for the problem:
+// 1. We need to check if the number is divisible by 3 and 5 first, if not, we will never reach the condition where the number is divisible by 3 and 5.
+// 2. Understand the % operator and how it works. The % operator returns the remainder of the division
+//    For example, 5 % 3 = 2 because 5 divided by 3 is 1 with a remainder of 2.
 public class fizz_buzz {
     // This is the traditional solution
     public List<String> fizzBuzzTraditionalSolution(int n) {

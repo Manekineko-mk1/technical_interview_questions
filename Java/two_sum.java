@@ -5,7 +5,7 @@ import java.util.Map;
 
 /*
 1. Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-2. You may assume that each input would have exactly one solution, and you may not use the same element twice.
+2. Hints: (This is a clarification question we can ask) You may assume that each input would have exactly one solution, and you may not use the same element twice.
 3. You can return the answer in any order.
 
 Example 1:
@@ -22,11 +22,13 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 */
 
+// Intuition:
+// 1. We need to find the two numbers that add up to the target.
+// 2. Brute force approach: We can use nested for loops to find the two numbers that add up to the target.
+// 3. Improved approach: We can use HashMap, by checking if the complement = (target - nums[i]) is in the HashMap, we can find if a solution exists in 1 pass.
 public class two_sum {
     // Time complexity: O(n^2) because of nested for loops
     // Space complexity: O(1) because no extra space is used
-    // This approach is not recommended because of the time complexity
-    // This approach is harder to understand because of nested for loops
     public int[] twoSumBruteForce(int[] nums, int target) {
         for (int i=0; i<nums.length; i++){
             for (int j=i+1; j<nums.length; j++){
@@ -37,12 +39,11 @@ public class two_sum {
         }
 
         // If no solution found
-        return new int[] {-1,-1};    
+        return null;    
     }
 
-    // Advantages: Faster than brute force, Time complexity: O(n) because of HashMap
-    // Disadvantages: Uses extra space, Space complexity: O(n) because of HashMap
-    // This approach is easier to understand because of HashMap and single for loop
+    // Time complexity: O(n) because of HashMap
+    // Space complexity: O(n) because of HashMap
     public int[] twoSumHashMap(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         

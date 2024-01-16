@@ -15,6 +15,12 @@ Input: s = "rat", t = "car"
 Output: false
 */
 
+// Intuition:
+// 1. We need to check if the two strings are anagrams.
+// 2. An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+//    For example: "cat" and "act" are anagrams.
+// 4. Brute force approach: We can use nested loops, check to see if each character in s is in t, but we will need to remove the character from t if it is found.
+// 5. Easier approach: We can convert the strings to char arrays, sort them, and compare them.
 public class valid_anagram  {
     public boolean isAnagram(String s, String t) {
         if(s.length()!= t.length()) {

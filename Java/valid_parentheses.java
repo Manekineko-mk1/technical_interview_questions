@@ -23,7 +23,15 @@ Input: s = "(]"
 Output: false
 */
 
-
+// Intuition:
+// 1. We can check if the string is valid parentheses by using a stack.
+// 2. If the character is an opening bracket, push it onto the stack.
+// 3. If the character is a closing bracket, check if the stack is empty.
+//    If the stack is empty, meaning there is no opening bracket to match the closing bracket, return false.
+//    If the stack is not empty, pop the top of the stack and check if the top of the stack matches the closing bracket.
+//    If the top of the stack does not match the closing bracket, return false.
+// 4. After the loop, if the stack is empty, return true.
+//    If the stack is not empty, return false.
 public class valid_parentheses {
     public boolean isValid(String s) {
         if (s == null || s.length() == 0) {
