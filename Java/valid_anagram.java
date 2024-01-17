@@ -16,14 +16,29 @@ Output: false
 */
 
 // Intuition:
-// 1. We need to check if the two strings are anagrams.
-// 2. An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
-//    For example: "cat" and "act" are anagrams.
-// 4. Brute force approach: We can use nested loops, check to see if each character in s is in t, but we will need to remove the character from t if it is found.
-// 5. Easier approach: We can convert the strings to char arrays, sort them, and compare them.
-public class valid_anagram  {
-    public boolean isAnagram(String s, String t) {
-        if(s.length()!= t.length()) {
+// 1. We need to check if the two strings are anagrams. Is it possible to arrange the characters from s such that it became t, such as "cat" to "act".
+// 2. Brute force approach: We can use nested loops, check to see if each character in s is in t, remove the character from t if it is found.
+// 3. Easier approach: We can convert the strings to char arrays, sort them, and compare them.
+// Questions we can ask before coding:
+// 1. Is it case insensitive? Can we consider cAt and act as anagrams?
+public class valid_anagram {
+    public boolean isAnagramBruteForce(String s, String t) {
+        if(s.length()!= t.length() || s == null || t == null) {
+            return false;
+        }
+
+        for(int i = 0; i < s.length(); i++) {
+            int index = t.indexOf(s.charAt(i));
+            if(index == -1) {
+                return false;
+            }
+            t = t.substring(0, index) + t.substring(index + 1);
+        }
+        return true;
+    }
+
+    public boolean isAnagramImproved(String s, String t) {
+        if(s.length()!= t.length() || s == null || t == null) {
             return false;
         }
 
@@ -31,8 +46,18 @@ public class valid_anagram  {
     }
 
     public String sortString(String str){
-        char c[] = str.toCharArray();
+        char c[] = str.toLowerCase().toCharArray();
         Arrays.sort(c);
         return new String(c);   
+    }
+
+
+    public static void main(String[] args) {
+        valid_anagram solution = new valid_anagram();
+        String s = "anagram";
+        String t = "nagaram";
+        System.out.println(solution.isAnagramBruteForce(s, t));
+        System.out.println(solution.isAnagramImproved(s, t));
+        
     }
 }

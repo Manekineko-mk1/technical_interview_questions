@@ -60,5 +60,18 @@ public class two_sum {
         // If no solution found
         return null;
     }
+
+    public static void main(String[] args) {
+        two_sum obj = new two_sum();
+        int[] nums = {2,7,11,15};
+        int target = 9;
+
+        int[] result = obj.twoSumBruteForce(nums, target);
+        System.out.println("Brute force approach: " + result[0] + " " + result[1]);
+
+        result = obj.twoSumHashMap(nums, target);
+        System.out.println("HashMap approach: " + result[0] + " " + result[1]);
+        
+    }
     
 }
