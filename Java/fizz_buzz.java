@@ -72,10 +72,6 @@ public class fizz_buzz {
         return result;
     }
 
-    public makeApI call (String uri) {
-        return new makeApI();
-    }
-
     public static void main(String[] args) {
         fizz_buzz obj = new fizz_buzz();
         System.out.println(obj.fizzBuzz(15));
@@ -83,43 +79,3 @@ public class fizz_buzz {
 }
 
 
-// create two threads, one thread prints odd numbers, the other thread prints even numbers
-public void   printNum (int n) {
-    Object lock = new Object();
-    Thread t1 = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            synchronized (lock) {
-                for (int i = 1; i <= n; i += 2) {
-                    System.out.println(i);
-                    lock.notify();
-                    try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    });
-
-    Thread t2 = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            synchronized (lock) {
-                for (int i = 2; i <= n; i += 2) {
-                    System.out.println(i);
-                    lock.notify();
-                    try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    });
-
-    t1.start();
-    t2.start();
-}
