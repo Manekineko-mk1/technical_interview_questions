@@ -1,3 +1,4 @@
+package Java;
 public class multi_threads_even_odd_num {
     private int max;
     private boolean oddTurn = true;
